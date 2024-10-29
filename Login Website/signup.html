@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>Sign Up</h2>
+        <form action="" method="post" onsubmit="return validateForm()">
+            <input type="text" name="Username" id="username" placeholder="Username">
+            <input type="email" name="Email" id="email" placeholder="Email">
+            <input type="password" name="Password" id="password" placeholder="Password">
+            <input type="submit" value="Sign Up">
+        </form>
+    </div>
+</body>
+
+<script>
+    function validateForm() {
+        const usernameInput = document.getElementById("username");
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        var validated = true;
+
+        if (usernameInput.value.trim() === "") {
+            usernameInput.classList.add("input-error");
+            validated = false;
+        } else {
+            usernameInput.classList.remove("input-error");
+        }
+
+        if (emailInput.value.trim() === "") {
+            emailInput.classList.add("input-error");
+            validated = false;
+        } else {
+            emailInput.classList.remove("input-error");
+        }
+
+        if (passwordInput.value.trim() === "") {
+            passwordInput.classList.add("input-error");
+            validated = false;
+        } else {
+            passwordInput.classList.remove("input-error");
+        }
+
+        return validated;
+    }
+</script>
+</html>

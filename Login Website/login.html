@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm" action="login.php" method="post" onsubmit="return validateForm()">
+            <input type="email" name="Email" id="email" placeholder="Email">
+            <div class="empty-input-message">Please enter an email</div>
+            <div class="invalid-data-message">Please enter a valid email</div>
+            <input type="password" name="Password" id="password" placeholder="Password" >
+            <div class="empty-input-message">Please enter a password</div>
+            <div class="invalid-data-message">Please enter a valid password</div>
+            <input type="submit" value="Login">
+        </form>
+        <div class="forgot-password">
+            <a href="#">Forgot your password?</a>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    function validateForm() {
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        const emptyInputMessage = document.getElementsByClassName("empty-input-message");
+        const invalidDataMessage = document.getElementsByClassName("invalid-data-message");
+        var validated = true;
+
+        if (emailInput.value.trim() === "") {
+            emailInput.classList.add("input-error");
+            emailInput.style.marginBottom = "5px";
+            emptyInputMessage[0].style.display = "block";
+            validated = false;
+        } else {
+            emailInput.classList.remove("input-error");
+            emailInput.style.marginBottom = "25px";
+            emptyInputMessage[0].style.display = "none";
+        }
+
+        if (passwordInput.value.trim() === "") {
+            passwordInput.classList.add("input-error");
+            passwordInput.style.marginBottom = "5px";
+            emptyInputMessage[1].style.display = "block";
+            validated = false;
+        } else {
+            passwordInput.classList.remove("input-error");
+            passwordInput.style.marginBottom = "25px";
+            emptyInputMessage[1].style.display = "none";
+        }
+
+        if (validated) submitLogin();
+        return false;
+    }
+
+</script>
+</html>
+
